@@ -29,7 +29,8 @@ def configure(cfg):
     cfg.find_program('rootcint', var='ROOTCINT', path_list=path_list)
     cfg.find_program('rlibmap', var='RLIBMAP', path_list=path_list, mandatory=False)
 
-    cfg.env.LIB_ROOTSYS += ['Minuit2','TreePlayer','Spectrum']
+    #cfg.env.LIB_ROOTSYS += ['Minuit2','TreePlayer','Spectrum']
+    cfg.env.LIB_ROOTSYS += ['Minuit2','TreePlayer','Spectrum','TMVA']
     return
 
 @conf
