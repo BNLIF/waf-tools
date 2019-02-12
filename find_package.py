@@ -47,7 +47,7 @@ def build(bld):
 
 @conf
 def make_package(bld, name, use=''):
-    use = to_list(use) + ['ROOTSYS']
+    use = to_list(use) 
 
     includes = []
     headers = []
