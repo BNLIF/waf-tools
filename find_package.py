@@ -27,6 +27,7 @@ def options(opt):
     opt.load('waf_unit_test')
     opt.load('find_root', tooldir=_tooldir)
     opt.load('find_fftw3', tooldir=_tooldir)
+    opt.load('find_glpk', tooldir=_tooldir)
     opt.load('find_eigen3', tooldir=_tooldir)
     opt.load('boost', tooldir=_tooldir)
     
@@ -36,6 +37,7 @@ def configure(cfg):
     cfg.load('waf_unit_test')
     cfg.load('find_root', tooldir=_tooldir)
     cfg.load('find_fftw3', tooldir=_tooldir)
+    cfg.load('find_glpk', tooldir=_tooldir)
     cfg.load('find_eigen3', tooldir=_tooldir)
     cfg.load('boost', tooldir=_tooldir)
     pass
