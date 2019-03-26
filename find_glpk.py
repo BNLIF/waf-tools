@@ -27,7 +27,7 @@ def check_glpk(ctx, mandatory=True):
         if ctx.options.with_glpk_include:
             ctx.env.INCLUDES_GLPK = [ctx.options.with_glpk_include]
         else:
-            ctx.env.INCLUDES_GLPK = [osp.join(instdir, 'include/glpk')]
+            ctx.env.INCLUDES_GLPK = [osp.join(instdir, 'include')]
         if ctx.options.with_glpk_lib:
             ctx.env.LIBPATH_GLPK = [ctx.options.with_glpk_lib]
 
