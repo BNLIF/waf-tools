@@ -27,7 +27,7 @@ def check_fftw(ctx, mandatory=True):
         if ctx.options.with_fftw_include:
             ctx.env.INCLUDES_FFTW = [ctx.options.with_fftw_include]
         else:
-            ctx.env.INCLUDES_FFTW = [osp.join(instdir, 'include/fftw3')]
+            ctx.env.INCLUDES_FFTW = [osp.join(instdir, 'include')]
         if ctx.options.with_fftw_lib:
             ctx.env.LIBPATH_FFTW = [ctx.options.with_fftw_lib]
 
