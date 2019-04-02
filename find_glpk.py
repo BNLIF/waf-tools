@@ -13,7 +13,7 @@ def options(opt):
 
 
 @conf
-def check_glpk(ctx, mandatory=True):
+def check_glpk(ctx, mandatory=False):
     instdir = ctx.options.with_glpk
 
     if instdir is None or instdir.lower() in ['yes', 'true', 'on']:
