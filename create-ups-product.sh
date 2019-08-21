@@ -28,7 +28,7 @@ EOF
     exit 1
 }
 
-DEV_PRODUCTS="$(realpath $1)"; shift
+DEV_PRODUCTS="$(readlink -f $1)"; shift
 VERSION="$1"; shift
 quals_array=(${1//,/ }); shift
 pkg_deps="$@"
@@ -42,7 +42,7 @@ if [ -z "$UPS_DIR" -o -z "$PRODUCTS" ]; then
     usage "Must setup UPS"
 fi
 
-tooldir="$(dirname $(realpath $BASH_SOURCE))"
+tooldir="$(dirname $(readlink -f $BASH_SOURCE))"
 topdir="$(dirname $tooldir)"
 pkg_name="$(basename $topdir)"
 PACKAGE=$(echo $pkg_name | tr '-' '_')
