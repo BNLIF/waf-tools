@@ -72,7 +72,8 @@ def gen_rootcling_dict(bld, name, linkdef, headers = '', includes = '', use=''):
         linkdef = bld.path.find_resource(linkdef)
     source_nodes = headers + [linkdef]
     sources = ' '.join([x.abspath() for x in source_nodes])
-    rule = '${ROOTCLING} -f ${TGT[0].abspath()} -rml %s -rmf ${TGT[1].abspath()} %s %s' % (dict_lib, incs, sources)
+    #rule = '${ROOTCLING} -f ${TGT[0].abspath()} -rml %s -rmf ${TGT[1].abspath()} %s %s' % (dict_lib, incs, sources)
+    rule = '${ROOTCLING} -f ${TGT[0].abspath()} -noIncludePaths -inlineInputHeader -rml %s -rmf ${TGT[1].abspath()} %s %s' % (dict_lib, incs, sources)
     #print 'RULE:',rule
     bld(source = source_nodes,
         target = [dict_src, dict_map, dict_pcm],
