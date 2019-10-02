@@ -221,6 +221,9 @@ tablefile="${VERSIONDIR}/ups/${PACKAGE}.table"
 sed -i 's/\(^.*\)_LIB,\(.*\)lib)/&\n\1_LIB64,\2lib64)/' ${tablefile}
 sed -i 's/\(^.*\)_LIB})\(.*\)/&\n\1_LIB64})\2/' ${tablefile}
 
+# add eigen dependency
+sed -i '/setupRequired( boost/a\    setupRequired( eigen v3_3_4a )' ${tablefile}
+
 # Not sure what the best thing to do if the product is already built
 # in this configuration. This will hopefully at least cause 'make ups'
 # to not fail
@@ -230,18 +233,21 @@ if ups exist ${PACKAGE} ${VERSION} -q ${QUALS}; then
     echo You may want to manually remove ${VERSIONDIR}'/*' or even
     echo ${VERSIONDIR} and rerun 'make ups'
     echo 
-    ups undeclare -z ${DEV_PRODUCTS} -r ${VERSIONDIR} -5 -m ${tablefile} -q ${QUALS} ${PACKAGE} ${VERSION}
+    ups undeclare -z ${DEV_PRODUCTS} -r ${VERSIONDIR} -4 -m ${tablefile} -q ${QUALS} ${PACKAGE} ${VERSION}
 fi
 
 
 echo Declaring with:
-echo ups declare -z ${DEV_PRODUCTS} -r ${VERSIONDIR} -5 -m ${tablefile} -q ${QUALS} ${PACKAGE} ${VERSION}
-     ups declare -z ${DEV_PRODUCTS} -r ${VERSIONDIR} -5 -m ${tablefile} -q ${QUALS} ${PACKAGE} ${VERSION}
+echo ups declare -z ${DEV_PRODUCTS} -r ${VERSIONDIR} -4 -m ${tablefile} -q ${QUALS} ${PACKAGE} ${VERSION}
+     ups declare -z ${DEV_PRODUCTS} -r ${VERSIONDIR} -4 -m ${tablefile} -q ${QUALS} ${PACKAGE} ${VERSION}
 
 if [ "$?" != "0" ]; then
     echo ups declare failed. Bailing
     exit 1
 fi
+
+# set TABLE_FILE = wcp.table in the version file
+find ${VERSIONDIR}.version -type f -name '*' -exec sed -i 's/TABLE_FILE\(.*\)/TABLE_FILE = wcp.table/' {} \;
 
 echo "Now ups list says the available builds are:"
 ups list -aK+ ${PACKAGE}
@@ -296,7 +302,7 @@ $WAF configure \
     --with-eigen="$EIGEN_DIR" \
     --prefix=${!PRODNAME_UC_FQ_DIR} || usage "configuration of source failed"
 
-$WAF --notests clean install || usage "build failed"
+$WAF --notests -j 4 install || usage "build failed"
 
 
 
