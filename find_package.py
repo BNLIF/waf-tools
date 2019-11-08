@@ -91,7 +91,7 @@ def make_package(bld, name, use=''):
             export_includes = 'inc',
             use=use)
 
-    if testsrc:
+    if testsrc and not bld.options.no_tests:
         for test_main in testsrc:
             bld.program(features = 'test', 
                         source = [test_main], 
