@@ -28,5 +28,6 @@ $topdir/waf-tools/waf configure \
     --with-fftw="$FFTW_FQ_DIR" \
     --with-fftw-include="$FFTW_INC" \
     --with-fftw-lib="$FFTW_LIBRARY" \
-    --with-eigen="$EIGEN_DIR"
+    --with-eigen="$EIGEN_DIR" \
+    --with-glpk="$GLPK_FQ_DIR/" --with-glpk-include="$GLPK_INC" --with-glpk-lib="$GLPK_LIB"
 
