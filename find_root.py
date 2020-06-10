@@ -30,7 +30,7 @@ def configure(cfg):
     cfg.find_program('rlibmap', var='RLIBMAP', path_list=path_list, mandatory=False)
 
     #cfg.env.LIB_ROOTSYS += ['Minuit2','TreePlayer','Spectrum']
-    cfg.env.LIB_ROOTSYS += ['Minuit2','TreePlayer','Spectrum','TMVA']
+    cfg.env.LIB_ROOTSYS += ['Minuit2','TreePlayer','Spectrum','TMVA', 'TMVAGui']
     return
 
 @conf
