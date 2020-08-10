@@ -30,6 +30,7 @@ def options(opt):
     opt.load('find_glpk', tooldir=_tooldir)
     opt.load('find_eigen3', tooldir=_tooldir)
     opt.load('boost', tooldir=_tooldir)
+    opt.load('find_python', tooldir=_tooldir)
     
 
 def configure(cfg):
@@ -40,6 +41,7 @@ def configure(cfg):
     cfg.load('find_glpk', tooldir=_tooldir)
     cfg.load('find_eigen3', tooldir=_tooldir)
     cfg.load('boost', tooldir=_tooldir)
+    cfg.load('find_python', tooldir=_tooldir)
     pass
 
 def build(bld):
