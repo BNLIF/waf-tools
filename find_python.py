@@ -1,4 +1,5 @@
 import os.path as osp
+import sys
 from waflib.Configure import conf
 
 
@@ -33,7 +34,9 @@ def check_python(ctx, mandatory=True):
 
     ctx.check(header_name="Python.h", use='PYTHON', mandatory=mandatory)
     # need to explicitly add floating point version of lib
-    ctx.env.LIB_PYTHON += ['python2.7', 'pthread', 'dl', 'util', 'm']
+    python_lib = 'python{}.{}'.format(sys.version_info[:][0],sys.version_info[:][1])
+    #print('python lib: "{}"'.format(python_lib))
+    ctx.env.LIB_PYTHON += [python_lib, 'pthread', 'dl', 'util', 'm']
     if len(ctx.env.INCLUDES_PYTHON):
         ctx.end_msg(ctx.env.INCLUDES_PYTHON[0])
     else:
