@@ -84,8 +84,8 @@ def gen_rootcling_dict(bld, name, linkdef, headers = '', includes = '', use=''):
     #           includes = includes,
     #           use = use + [name])
 
-    bld.install_files('${PREFIX}/lib/', dict_map)
-    bld.install_files('${PREFIX}/lib/', dict_pcm)
+    bld.install_files('${PREFIX}/lib64/', dict_map)
+    bld.install_files('${PREFIX}/lib64/', dict_pcm)
 
 
 @conf
@@ -112,5 +112,5 @@ def gen_rootcint_dict(bld, name, linkdef, headers = '', includes=''):
     bld(source = [linkdef], target=rootmap,
         rule='${RLIBMAP} -o ${TGT} -l lib%sDict.so -d lib%s.so -c ${SRC}' % (name, name))
     
-    bld.install_files('${PREFIX}/lib/', rootmap)
+    bld.install_files('${PREFIX}/lib64/', rootmap)
                       
