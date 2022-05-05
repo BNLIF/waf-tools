@@ -300,6 +300,8 @@ $WAF configure \
     --with-fftw-include="$FFTW_INC" \
     --with-fftw-lib="$FFTW_LIBRARY" \
     --with-eigen="$EIGEN_DIR" \
+    --with-glpk="$GLPK_FQ_DIR/" --with-glpk-include="$GLPK_INC" --with-glpk-lib="$GLPK_LIB" \
+    --with-python="$PYTHON_ROOT/" --with-python-include="$PYTHON_INCLUDE" --with-python-lib="$PYTHON_LIB" \
     --prefix=${!PRODNAME_UC_FQ_DIR} || usage "configuration of source failed"
 
 $WAF --notests -j 4 install || usage "build failed"
